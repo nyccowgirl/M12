@@ -1,0 +1,140 @@
+PART 1:
+1.  Tree A: binary tree, not complete, not full
+            9 nodes, 4 leaves
+            3 deep
+            4 height
+
+    Tree B: binary tree, complete, not full
+            8 nodes, 4 leaves
+            2 deep
+            4 height
+
+    Tree C: not binary tree, not complete, not full
+            9 nodes, 5 leaves
+            3 deep
+            4 height
+
+2.  Tree A: no 37 is to right of 39
+    Tree B: yes
+    Tree C: no 62 is to right of 65
+    Tree D: yes
+
+3.  [67, 54, 82, 33, 55, 78, 91, 24, 34, *, *, 72, 81, *, *]
+
+4.                  K
+                A
+            V       M
+                H       Q
+                    F/P
+                        N
+
+5.  preorder: 19, 24, 36, 62, 37, 48, 21, 18, 94
+    inorder: 62, 36, 24, 37, 48, 19, 18, 21, 94
+    postorder: 62, 36, 48, 37, 24, 18, 94, 21, 19
+
+7.                  21
+            17              35
+        12      19      27      62
+    4                       32
+    balanced and unique
+
+8.  unbalanced: 15, 10, 3, 5, 25, 29, 8, 30, 9, 22, 11, 18
+                            15
+                    10              25
+                3       11      22      29
+                    5        18             30
+                        8
+                            9
+
+    balanced: 15, 29, 30, 9, 11, 22, 5, 10, 8, 3, 25, 18
+                              15
+                    9                   29
+                5        11          22      30
+           3       8/10          18      25
+
+9.  search: 50, 57, 52, 55
+    search: 50, 25, 32, 27, not found
+
+10. part a:
+                        50
+                  21            59
+              13      32     52     62
+          7         27  42/49  55       63
+
+  part b:
+                        50
+                27              55
+            13      32      52      62
+        7      21      42/49      59    63
+
+11. BST and leaf
+    containsAsLeaf(Node node, T target) {
+        if (node == null) {
+            return false;
+        } else if (target < node.data) {
+            return containsAsLeaf(node.left, target);
+        } else if (target > node.data) {
+            return containsAsLeaf(node.right, target);
+        } else {
+            return node.left == null && node.right == null;
+        }
+    }
+
+12. BST
+    boolean isBST(Node node) {
+        boolean result;
+        if (node == null) {
+            result = true;
+        } else if (node.left == null && node.right == null) {
+            result = true;
+        } else {
+            boolean left, right;
+            if (node.left == null) {
+                left = true;
+            } else {
+                left = node.left.data < node.data && isBST(node.left);
+            }
+
+            if (node.right == null) {
+                right = true;
+            } else {
+                right = node.right.data > node.data && isBST(node.right);
+            }
+
+            result = left && right;
+        }
+        return result;
+    }
+
+13. smallest element in BST
+    T findSmallest(Node node) {
+        if (node == null) {
+            return null;
+        } else if (node.left = null) {
+            return node.data;
+        } else {
+            return findSmallest(node.left);
+        }
+    }
+
+PART 2:
+1.  Tree A: no, not complete
+    Tree B: no, not complete
+    Tree C: no, 46 < 55
+    Tree D: yes
+
+2.  maxheap, not unique
+                    62
+            35              32
+        27      21      17      19
+    12      4
+
+5.  2-3 tree
+                48
+          24            67 89
+    12          32 / 56  83   95
+
+6.  2-4 tree
+                    48
+            24              67
+        12      32      56      83 89 95
